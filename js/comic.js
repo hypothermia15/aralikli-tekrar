@@ -409,7 +409,7 @@ xhr.addEventListener("load", function(event){
 	// What's this page's language?
 	var pathnameSplit = window.location.pathname.split("/");
 	var pagename = pathnameSplit[pathnameSplit.length-1];
-	var pageLang = (pagename==""||pagename=="index") ? "en" : pagename.split(".")[0];
+	var pageLang = document.documentElement.lang || "tr"; // uyarlama: sayfa dili html etiketinden okunur
 
 	////////////////////////////////
 
@@ -468,7 +468,7 @@ xhr.addEventListener("load", function(event){
 		if(lang){
 			html += lang.translatedBy;
 			html += " &middot; ";
-			html += "<a href='./'>"+lang.originalIn+"</a>";
+			html += "<a target='_blank' rel='noopener' href='https://ncase.me/remember/'>"+lang.originalIn+"</a>";
 			$("#translation_credits").innerHTML = html;
 			$("#translation_credits_2").innerHTML = lang.translatedBy;
 		}
